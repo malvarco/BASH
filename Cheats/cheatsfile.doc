@@ -1,0 +1,106 @@
+@@find
+Find all the files whose name is tecmint.txt in a current working directory.
+	find . -name tecmint.txt
+	./tecmint.txt
+
+Find files under /home directory.
+	find /home -name tecmint.txt
+	/home/tecmint.txt
+
+Find files using name and ignoring case.
+	find /home -iname tecmint.txt
+	/home/tecmint.txt /home/Tecmint.txt
+
+Find files only current directory with depth
+	find /home -depth 1 -iname tecmint.txt
+	tecmint.txt
+
+Find Directories using name.
+	find / -type d -name Tecmint
+	/Tecmint.txt
+
+Find PHP Files using name.
+	find . -type f -name tecmint.php
+	/tecmint.php
+
+Find all PHP Files in current Directory.
+	find . -type f -name "*.php"
+	./tecmint.php ./login.php ./index.php
+
+Find files with 777 Permissions.
+	find . -type f -perm 0777 -print
+
+Find and remove single file. find a single file and remove it.
+	find . -type f -name "tecmint.txt" -exec rm -f {} \;
+
+Find and remove multiple file. find and remove .mp3 and .txt files.
+	find . -type f -name "*.txt" -exec rm -f {} \;
+OR
+	find . -type f -name "*.mp3" -exec rm -f {} \;
+
+Find all empty files.
+find /tmp -type f -empty
+
+Find all empty Directories.
+	find /tmp -type d -empty
+
+Find all Hidden Files.
+	find /tmp -type f -name ".*"
+
+Find Last 50 Days Modified Files.
+	find / -mtime 50
+
+Find Last 50 Days Accessed Files.
+	find / -atime 50
+
+Find Size between 50 MB - 100 MB.
+	find / -size +50M -size -100M
+
+Find and Delete 100 MB Files.
+	find / -type f -size +100M -exec rm -f {} \;
+
+Find Specific Files and Delete.
+    find / -type f -name *.mp3 -size +10M -exec rm {} \;
+
+@@mount
+Para averiguar cual es la particion disponible con
+gpart list
+Montar con:
+mkdir /media/USBpendrive
+mount -t msdosfs /dev/da0s1 /media/USBpendrive
+
+Otras utilidades: lsblk, umount.
+
+@@rename
+qmv: Renombrar varios archivos en ambiente Vim (package Renameutils)
+
+Mis scripts:
+RandomRename: dar un nombre random a un archivo. Uso: RandomRename <file>
+renameRNDnames: da nombres aleatorios a todos los archivos en el directorio actual.
+RandomNameGenerator: genera un nombre aleatorio.
+
+@@scripts
+En FreeBSD, en Bash y tal vez otros scripts si hay líneas blancas da error de sintaxis: syntax error near unexpected token
+Shebang para FreeBSD: #!/usr/bin/env bash
+
+@@sox
+NOTA: En FreeBSD SOX no viene compilado para MP3. Usar Ffmpg en su lugar.
+MP3 Bash SOX
+
+TRIM : sox in.mp3 out.mp3 trim 2 0.195 Saves 195 milliseconds with an offset of 2 seconds of in.mp3 to out.mp3.
+If you only want the first two seconds of the file use trim like this:
+	sox in.mp3 out.mp3 trim 0 2 If you want to skip the first two seconds of the file use trim like this:
+
+	sox in.mp3 out.mp3 trim 2
+
+MONO :
+
+	sox disturbence.wav -r 16000 -c 1 -b 16 disturbence16000mono_16bit.wav
+
+gives within one command
+Sample rate of 16 kHz (-r 16000), one channel (mono) (-c 1), 16 bits bit depth (-b 16).
+
+@@umount
+Para unmount /home filesystem:
+umount /home
+Si no quiere usar umount -f (forzar)
