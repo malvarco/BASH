@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+# Search directory
+search_dir="/home/manol/.bin/"
 # Search terms that begin with "@@"
 search_prefix="@@"
 # This cheat utility search in file 'cheatsfile.doc' in current directory
 cheatfiledoc="cheatsfile.doc"
+cheatfiledoc=$search_dir$cheatfiledoc
 # Get line number where cheat term is found
 cheat_linenumber=$(grep -in $search_prefix$1 $cheatfiledoc | sed 's/:.*//')
 sed -n $cheat_linenumber',$p' $cheatfiledoc | more

@@ -62,6 +62,28 @@ Find and Delete 100 MB Files.
 Find Specific Files and Delete.
     find / -type f -name *.mp3 -size +10M -exec rm {} \;
 
+@@git
+    git add -A is a handy shortcut for doing both git add -a & git add -u.
+Summary:
+	git add -A stages all changes
+	git add . stages new files and modifications, without deletions (on the current directory and its subdirectories).
+	git add -u stages modifications and deletions, without new files
+Detail:
+	git add -A is equivalent to git add .; git add -u.
+The important point about git add . is that it looks at the working tree and adds all those paths to the staged changes if they are either changed or are new and not ignored, it does not stage any 'rm' actions.
+	git add -u looks at all the already tracked files and stages the changes to those files if they are different or if they have been removed. It does not add any new files, it only stages changes to already tracked files.
+	git add -A is a handy shortcut for doing both of those.
+    git add -u : Lo más fácil para actualizar "deletes not committed , etc".
+	git-add - Add file contents to the index
+	-u --update
+Update the index just where it already has an entry matching <pathspec>. This removes as well as modifies index entries to match the working tree, but adds no new files.
+If no <pathspec> is given when -u option is used, all tracked files in the entire working tree are updated (old versions of Git used to limit the update to the current directory and its subdirectories).
+	-A --all --no-ignore-removal
+Update the index not only where the working tree has a file matching <pathspec> but also where the index already has an entry. This adds, modifies, and removes index entries to match the working tree.
+If no <pathspec> is given when -A option is used, all files in the entire working tree are updated (old versions of Git used to limit the update to the current directory and its subdirectories).
+
+
+
 @@mount
 Para averiguar cual es la particion disponible con
 gpart list
