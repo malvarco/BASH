@@ -82,6 +82,15 @@ If no <pathspec> is given when -u option is used, all tracked files in the entir
 Update the index not only where the working tree has a file matching <pathspec> but also where the index already has an entry. This adds, modifies, and removes index entries to match the working tree.
 If no <pathspec> is given when -A option is used, all files in the entire working tree are updated (old versions of Git used to limit the update to the current directory and its subdirectories).
 
+@@ifconfig
+*List down network interface: ifconfig -d
+*List all up network interface: ifconfig -u
+
+ifconfig network-interface down
+ifconfig network-interface up
+
+@@lsof
+pkg install lsof
 
 
 @@mount
@@ -92,6 +101,26 @@ mkdir /media/USBpendrive
 mount -t msdosfs /dev/da0s1 /media/USBpendrive
 
 Otras utilidades: lsblk, umount.
+
+@@net
+@@network
+
+*Right way to restart networking services:
+ service netif restart && service routing restart
+ 
+service netif restart
+service netif stop
+service routing restart
+
+
+Related network commands:
+* ifconfig
+* lsof
+* netstat
+* sockstat
+
+@@netstat
+netstat -an |egrep 'Proto|LISTEN'
 
 @@rename
 qmv: Renombrar varios archivos en ambiente Vim (package Renameutils)
@@ -104,6 +133,15 @@ RandomNameGenerator: genera un nombre aleatorio.
 @@scripts
 En FreeBSD, en Bash y tal vez otros scripts si hay líneas blancas da error de sintaxis: syntax error near unexpected token
 Shebang para FreeBSD: #!/usr/bin/env bash
+
+@@sockstat
+
+List all IPv4 and IPv6 network sockets: sockstat -4 -6
+List all connected sockets: sockstat -c
+Display all network sockets in listening state and Unix domain sockets. sockstat -l
+
+Related network commands:
+* network
 
 @@sox
 NOTA: En FreeBSD SOX no viene compilado para MP3. Usar Ffmpg en su lugar.

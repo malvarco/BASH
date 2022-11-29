@@ -6,7 +6,23 @@ search_prefix="@@"
 # This cheat utility search in file 'cheatsfile.doc' in current directory
 cheatfiledoc="cheatsfile.doc"
 cheatfiledoc=$search_dir$cheatfiledoc
-# Get line number where cheat term is found
-cheat_linenumber=$(grep -in $search_prefix$1 $cheatfiledoc | sed 's/:.*//')
+showUsage() {
+echo "Usage: cheat topic"
+echo
+echo "Available topics:"
+availableTopics=$(grep -in $search_prefix$1 $cheatfiledoc)
+sed 's/^.*@//' <<< $availableTopics | more
+exit 0
+}
+# Get line number where first cheat term is found
+cheat_linenumber=$(grep -in $search_prefix$1 $cheatfiledoc | head -1 | sed 's/:.*//')
+#echo $cheat_linenumber
+# If args empty or help or nothing found show usage 
+if test "$1" == "" || test "$1" == "help" || test -z $cheat_linenumber
+then
+        showUsage
+
+fi
 sed -n $cheat_linenumber',$p' $cheatfiledoc | more
+
 
