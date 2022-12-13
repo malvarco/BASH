@@ -1,3 +1,12 @@
+@@boot
+Get las boot message
+	dmesg -a
+
+@@diff
+@@compare
+Compare two files (colordiff pkg must be installed):
+	diff file1 file2
+
 @@find
 Find all the files whose name is tecmint.txt in a current working directory.
 	find . -name tecmint.txt
@@ -62,6 +71,9 @@ Find and Delete 100 MB Files.
 Find Specific Files and Delete.
     find / -type f -name *.mp3 -size +10M -exec rm {} \;
 
+Search executable files in current directory
+	find . -type f -perm +111 -print
+
 @@git
     git add -A is a handy shortcut for doing both git add -a & git add -u.
 Summary:
@@ -119,6 +131,12 @@ Related network commands:
 * netstat
 * sockstat
 
+@@qmv
+
+Don't touch first column. Rename the second column.
+Then :wq
+:help
+
 @@netstat
 netstat -an |egrep 'Proto|LISTEN'
 
@@ -127,7 +145,7 @@ qmv: Renombrar varios archivos en ambiente Vim (package Renameutils)
 
 Mis scripts:
 RandomRename: dar un nombre random a un archivo. Uso: RandomRename <file>
-renameRNDnames: da nombres aleatorios a todos los archivos en el directorio actual.
+renameRND: da nombres aleatorios a todos los archivos en el directorio actual.
 RandomNameGenerator: genera un nombre aleatorio.
 
 @@scripts
@@ -159,6 +177,12 @@ MONO :
 
 gives within one command
 Sample rate of 16 kHz (-r 16000), one channel (mono) (-c 1), 16 bits bit depth (-b 16).
+
+@@symlink
+@@symlinks
+@@ln
+Create a symbolic link named /home/src and point it to /usr/src:
+	# ln -s /usr/src /home/src
 
 @@umount
 Para unmount /home filesystem:
