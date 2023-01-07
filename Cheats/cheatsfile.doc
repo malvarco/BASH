@@ -1,5 +1,5 @@
 @@boot
-Get las boot message
+Get last boot message
 	dmesg -a
 
 @@diff
